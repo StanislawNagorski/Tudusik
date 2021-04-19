@@ -8,6 +8,14 @@ class TasksList extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
       children: [
         SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask(),
+        SingleTask()
       ],
     );
   }
