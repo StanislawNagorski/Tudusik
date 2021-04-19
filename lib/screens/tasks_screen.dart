@@ -40,6 +40,15 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
               child: Container(
+            child: ListView(
+              padding: EdgeInsets.all(40.0),
+              children: [
+                Text('Taks one'),
+                Text('Write task 2'),
+                Text('Remember to add check icons'),
+                Text('Add one more then in mock, because You are awsome')
+              ],
+            ),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -47,6 +56,13 @@ class TasksScreen extends StatelessWidget {
                     topRight: Radius.circular(30.0))),
           ))
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          size: 40.0,
+        ),
+        backgroundColor: Colors.lightBlueAccent,
       ),
     );
   }
