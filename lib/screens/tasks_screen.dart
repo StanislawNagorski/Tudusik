@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/components/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -40,48 +41,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            child: ListView(
-              padding: EdgeInsets.all(40.0),
-              children: [
-                CheckboxListTile(
-                    title: Text(
-                      'Check one-liner',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                    value: false,
-                    onChanged: (value) {},
-                ),
-                CheckboxListTile(
-                    title: Text(
-                      'Check one-liner',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                    value: false,
-                    onChanged: (value) {},),
-                CheckboxListTile(
-                  title: Text(
-                    'Check one-liner',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
-                  ),
-                  value: false,
-                  onChanged: (value) {},
-
-          ),
-                CheckboxListTile(
-                  title: Text(
-                    'Check one-liner',
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
-                  ),
-                  value: false,
-                  onChanged: (value) {},
-
-                ),
-              ],
-            ),
+            child: TasksList(),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
