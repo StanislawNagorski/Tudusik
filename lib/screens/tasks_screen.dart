@@ -43,10 +43,43 @@ class TasksScreen extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.all(40.0),
               children: [
-                Text('Taks one'),
-                Text('Write task 2'),
-                Text('Remember to add check icons'),
-                Text('Add one more then in mock, because You are awsome')
+                CheckboxListTile(
+                    title: Text(
+                      'Check one-liner',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                    ),
+                    value: false,
+                    onChanged: (value) {},
+                ),
+                CheckboxListTile(
+                    title: Text(
+                      'Check one-liner',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                    ),
+                    value: false,
+                    onChanged: (value) {},),
+                CheckboxListTile(
+                  title: Text(
+                    'Check one-liner',
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+                  ),
+                  value: false,
+                  onChanged: (value) {},
+
+          ),
+                CheckboxListTile(
+                  title: Text(
+                    'Check one-liner',
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+                  ),
+                  value: false,
+                  onChanged: (value) {},
+
+                ),
               ],
             ),
             decoration: BoxDecoration(
