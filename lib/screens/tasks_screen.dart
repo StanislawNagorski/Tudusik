@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/components/tasks_list.dart';
+import 'package:to_do/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
 
-
-  Widget buildBottomSheet(BuildContext context){
-    return Center(
-      child: Container(
-        color: Colors.white,
-        child: Text('YEY!'),
-      ),
-    );
-  }
-
-  @override
+    @override
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -62,7 +53,7 @@ class TasksScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showModalBottomSheet(context: context, builder: buildBottomSheet),
+        onPressed: () => showModalBottomSheet(context: context, builder: (context) => AddTaskScreen(),),
         child: Icon(
           Icons.add,
           size: 40.0,
