@@ -3,9 +3,8 @@ import 'package:to_do/components/tasks_list.dart';
 import 'package:to_do/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
-
-    @override
-  Widget build(BuildContext context){
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
@@ -53,7 +52,11 @@ class TasksScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showModalBottomSheet(context: context, builder: (context) => AddTaskScreen(),),
+        onPressed: () => showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (context) => SingleChildScrollView(child: AddTaskScreen()),
+        ),
         child: Icon(
           Icons.add,
           size: 40.0,
