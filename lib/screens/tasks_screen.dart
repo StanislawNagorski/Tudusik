@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/components/tasks_list.dart';
-import 'package:to_do/models/Task.dart';
+import 'package:to_do/models/user_tasks.dart';
 import 'package:to_do/screens/add_task_screen.dart';
-
-import '../main.dart';
 
 class TasksScreen extends StatefulWidget {
 
@@ -13,13 +11,6 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-
-
-   // void addUserTask(String taskText){
-   //   setState(() {
-   //     userTasks.add(Task(name: taskText));
-   //   });
-   // }
 
   @override
   Widget build(BuildContext context) {
