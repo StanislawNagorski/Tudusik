@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import 'Task.dart';
+import 'task.dart';
 
 class UserTasks extends ChangeNotifier {
   List<Task> _list = [
@@ -23,6 +23,11 @@ class UserTasks extends ChangeNotifier {
   void checkTask(int index) {
     print(index);
     _list[index].toggleCheckBox();
+    notifyListeners();
+  }
+
+  void removeTask(int index){
+    _list.removeAt(index);
     notifyListeners();
   }
 }

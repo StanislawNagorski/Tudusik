@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do/models/Task.dart';
+import 'package:to_do/models/task.dart';
 
 class SingleTask extends StatelessWidget {
 
