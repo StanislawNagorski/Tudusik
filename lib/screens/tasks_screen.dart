@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/components/tasks_list.dart';
+import 'package:to_do/models/Task.dart';
 import 'package:to_do/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -42,7 +43,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            child: TasksList(),
+            child: TasksList(taskList: taskListFinal),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -66,3 +67,10 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+final List<Task> taskListFinal = [
+  Task(name: 'Dodaj funkce'),
+  Task(name: 'Zrób trening'),
+  Task(name: 'Zjedz kebaba'),
+  Task(name: 'zrób commita')
+];

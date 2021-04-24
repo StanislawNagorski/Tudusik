@@ -3,19 +3,18 @@ import 'package:to_do/components/task_single.dart';
 import 'package:to_do/models/Task.dart';
 
 class TasksList extends StatefulWidget {
+  List<Task> taskList;
+
+  TasksList({this.taskList});
+
   @override
   _TasksListState createState() => _TasksListState();
 }
 
 class _TasksListState extends State<TasksList> {
-  List<Task> taskList = [
-    Task(name: 'Dodaj funkce'),
-    Task(name: 'Zrób trening'),
-    Task(name: 'Zjedz kebaba')
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<Task> taskList = widget.taskList;
     return ListView.builder(
       itemCount: taskList.length,
       itemBuilder: (context, index) {
