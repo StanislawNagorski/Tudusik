@@ -15,7 +15,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
 
-    int numberOfTasks = Provider.of<UserTasks>(context).getNumberOfTasks();
+    int numberOfTasks = Provider.of<UserTasks>(context).numberOfTasks;
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,

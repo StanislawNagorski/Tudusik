@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 
 import 'Task.dart';
@@ -7,21 +9,20 @@ class UserTasks extends ChangeNotifier {
     Task(name: 'Hello! Thx for using our App!'),
   ];
 
-  List<Task> get list => _list;
+  UnmodifiableListView<Task> get list => UnmodifiableListView(_list);
 
-  void addToList(Task newTask){
+  void addToList(Task newTask) {
     _list.add(newTask);
     notifyListeners();
   }
 
-  int getNumberOfTasks(){
+  int get numberOfTasks {
     return _list.length;
   }
 
-  void checkTask(int index){
+  void checkTask(int index) {
     print(index);
     _list[index].toggleCheckBox();
     notifyListeners();
   }
-
 }
