@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do/components/tasks_list.dart';
 import 'package:to_do/models/Task.dart';
 import 'package:to_do/screens/add_task_screen.dart';
+
+import '../main.dart';
 
 class TasksScreen extends StatefulWidget {
 
@@ -10,19 +13,19 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-   List<Task> userTasks = [
-    Task(name: 'Hello! Thx for using our App!'),
-    Task(name: 'Add your tasks by pressing Add button below'),
-  ];
 
-   void addUserTask(String taskText){
-     setState(() {
-       userTasks.add(Task(name: taskText));
-     });
-   }
+
+   // void addUserTask(String taskText){
+   //   setState(() {
+   //     userTasks.add(Task(name: taskText));
+   //   });
+   // }
 
   @override
   Widget build(BuildContext context) {
+
+    int numberOfTasks = Provider.of<UserTasks>(context).getNumberOfTasks();
+
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
@@ -52,7 +55,7 @@ class _TasksScreenState extends State<TasksScreen> {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  '${userTasks.length} Tasks',
+                  '$numberOfTasks Tasks',
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 )
               ],
@@ -60,7 +63,7 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
           Expanded(
               child: Container(
-            child: TasksList(taskList: userTasks),
+            child: TasksList(),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -73,7 +76,7 @@ class _TasksScreenState extends State<TasksScreen> {
         onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
           context: context,
-          builder: (context) => SingleChildScrollView(child: AddTaskScreen(addFunction: addUserTask)),
+          builder: (context) => SingleChildScrollView(child: AddTaskScreen()),
         ),
         child: Icon(
           Icons.add,

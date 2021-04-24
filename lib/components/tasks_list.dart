@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do/components/task_single.dart';
 import 'package:to_do/models/Task.dart';
 
+import '../main.dart';
+
 class TasksList extends StatefulWidget {
-  List<Task> taskList;
-
-  TasksList({this.taskList});
-
   @override
   _TasksListState createState() => _TasksListState();
 }
@@ -14,7 +13,8 @@ class TasksList extends StatefulWidget {
 class _TasksListState extends State<TasksList> {
   @override
   Widget build(BuildContext context) {
-    List<Task> taskList = widget.taskList;
+    List<Task> taskList = Provider.of<UserTasks>(context).list;
+
     return ListView.builder(
       itemCount: taskList.length,
       itemBuilder: (context, index) {

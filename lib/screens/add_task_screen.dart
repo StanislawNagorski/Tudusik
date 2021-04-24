@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do/main.dart';
+import 'package:to_do/models/Task.dart';
 
 class AddTaskScreen extends StatelessWidget {
-
-  final Function addFunction;
-  AddTaskScreen({this.addFunction});
 
   @override
   Widget build(BuildContext context) {
 
     String userInput;
+
+    void _addNewUserTaskToList(String taskTitle){
+      Provider.of<UserTasks>(context, listen: false).addToList(Task(name: taskTitle));
+    }
 
     return Container(
       color: Color(0xff757575),
@@ -37,7 +41,7 @@ class AddTaskScreen extends StatelessWidget {
               SizedBox(height: 30.0,),
               TextButton(
                 onPressed: () {
-                  addFunction(userInput);
+                  _addNewUserTaskToList(userInput);
                   Navigator.pop(context);
                 },
                 child: Text('Add'),
