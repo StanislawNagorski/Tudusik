@@ -8,25 +8,26 @@ class TasksList extends StatefulWidget {
 }
 
 class _TasksListState extends State<TasksList> {
-
-  List<Task> taskList = [Task(name: 'Dodaj funkce'), Task(name: 'Zrób trening'), Task(name: 'Zjedz kebaba')];
+  List<Task> taskList = [
+    Task(name: 'Dodaj funkce'),
+    Task(name: 'Zrób trening'),
+    Task(name: 'Zjedz kebaba')
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.all(20.0),
-      children: [
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask(),
-        SingleTask()
-      ],
+    return ListView.builder(
+      itemCount: taskList.length,
+      itemBuilder: (context, index) {
+        return SingleTask(
+          task: taskList[index],
+          checkBoxCallBack: (bool value) {
+            setState(() {
+              taskList[index].toggleCheckBox();
+            });
+          },
+        );
+      },
     );
   }
 }
-

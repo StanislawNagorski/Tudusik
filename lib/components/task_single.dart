@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:to_do/models/Task.dart';
 
 class SingleTask extends StatelessWidget {
-  final Task task;
 
-  SingleTask(this.task);
+  final Task task;
+  final Function checkBoxCallBack;
+
+  SingleTask({this.task, this.checkBoxCallBack});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class SingleTask extends StatelessWidget {
             decoration: task.isCheck ? TextDecoration.lineThrough : null),
       ),
       value: task.isCheck,
-      onChanged: (value) => task.toggleCheckBox(value),
+      onChanged: (value) =>  checkBoxCallBack(value),
     );
   }
 }

@@ -5,7 +5,7 @@ class Task{
 
   Task({this.name, this.isCheck = false});
 
-  void toggleCheckBox(bool value){
-    isCheck = value;
+  void toggleCheckBox(){
+    isCheck = !isCheck;
   }
 }
