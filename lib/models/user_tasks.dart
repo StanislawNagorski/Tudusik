@@ -17,4 +17,11 @@ class UserTasks extends ChangeNotifier {
   int getNumberOfTasks(){
     return _list.length;
   }
+
+  void checkTask(int index){
+    print(index);
+    _list[index].toggleCheckBox();
+    notifyListeners();
+  }
+
 }

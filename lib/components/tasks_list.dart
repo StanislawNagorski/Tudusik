@@ -4,12 +4,8 @@ import 'package:to_do/components/task_single.dart';
 import 'package:to_do/models/Task.dart';
 import 'package:to_do/models/user_tasks.dart';
 
-class TasksList extends StatefulWidget {
-  @override
-  _TasksListState createState() => _TasksListState();
-}
 
-class _TasksListState extends State<TasksList> {
+class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Task> taskList = Provider.of<UserTasks>(context).list;
@@ -20,9 +16,10 @@ class _TasksListState extends State<TasksList> {
         return SingleTask(
           task: taskList[index],
           checkBoxCallBack: (bool value) {
-            setState(() {
-              taskList[index].toggleCheckBox();
-            });
+            Provider.of<UserTasks>(context, listen: false).checkTask(index);
+            // setState(() {
+            //   taskList[index].toggleCheckBox();
+            // });
           },
         );
       },
