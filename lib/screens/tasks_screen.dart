@@ -3,7 +3,24 @@ import 'package:to_do/components/tasks_list.dart';
 import 'package:to_do/models/Task.dart';
 import 'package:to_do/screens/add_task_screen.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+   List<Task> userTasks = [
+    Task(name: 'Hello! Thx for using our App!'),
+    Task(name: 'Add your tasks by pressing Add button below'),
+  ];
+
+   void addUserTask(String taskText){
+     setState(() {
+       userTasks.add(Task(name: taskText));
+     });
+   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +52,7 @@ class TasksScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  '12 Tasks',
+                  '${userTasks.length} Tasks',
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 )
               ],
@@ -43,7 +60,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            child: TasksList(taskList: taskListFinal),
+            child: TasksList(taskList: userTasks),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -56,7 +73,7 @@ class TasksScreen extends StatelessWidget {
         onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
           context: context,
-          builder: (context) => SingleChildScrollView(child: AddTaskScreen()),
+          builder: (context) => SingleChildScrollView(child: AddTaskScreen(addFunction: addUserTask)),
         ),
         child: Icon(
           Icons.add,
@@ -68,9 +85,4 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-final List<Task> taskListFinal = [
-  Task(name: 'Dodaj funkce'),
-  Task(name: 'Zrób trening'),
-  Task(name: 'Zjedz kebaba'),
-  Task(name: 'zrób commita')
-];
+
