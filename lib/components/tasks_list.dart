@@ -20,7 +20,7 @@ class TasksList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Task currentTask = snapshot.data[index];
                   return GestureDetector(
-                    onLongPress: () => data.removeTask(currentTask.id),
+                    onLongPress: () => Provider.of<UserTasks>(context, listen: false).removeTask(currentTask.id),
                     child: SingleTask(
                       task: currentTask,
                       checkBoxCallBack: (bool value) {
