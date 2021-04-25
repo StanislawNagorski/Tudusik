@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:to_do/components/task_single.dart';
 import 'package:to_do/models/task.dart';
 import 'package:to_do/services/user_tasks_controller.dart';
-import 'package:to_do/services/database_service.dart';
 
 class TasksList extends StatelessWidget {
   @override
@@ -24,7 +23,7 @@ class TasksList extends StatelessWidget {
                     child: SingleTask(
                       task: currentTask,
                       checkBoxCallBack: (bool value) {
-                       // taskData.checkTask(index);
+                        Provider.of<UserTasks>(context, listen: false).checkTask(currentTask);
                       },
                     ),
                   );

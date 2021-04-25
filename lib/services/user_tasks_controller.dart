@@ -27,16 +27,14 @@ class UserTasks extends ChangeNotifier {
     return _list.length;
   }
 
-  void checkTask(int index) {
-    print(index);
-    _list[index].toggleCheckBox();
+  void checkTask(Task task) async{
+    task.toggleCheckBox();
+    await DatabaseService.instance.update(task.toMap());
     notifyListeners();
   }
 
   void removeTask(int index) async{
-    // _list.removeAt(index);
-    var liczbaSkasowanych = await DatabaseService.instance.delete(index);
-    print('skasowanych: $liczbaSkasowanych');
+    await DatabaseService.instance.delete(index);
     notifyListeners();
   }
 }

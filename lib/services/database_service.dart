@@ -68,7 +68,6 @@ class DatabaseService {
 
   Future<int> delete(int id) async {
     Database db = await instance.database;
-    print('probuje skasować $id');
     return await db
         .delete(_tableName, where: '$_columnTaskId = ?', whereArgs: [id]);
   }
