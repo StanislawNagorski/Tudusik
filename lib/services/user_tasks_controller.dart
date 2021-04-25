@@ -1,4 +1,3 @@
-import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:to_do/services/database_service.dart';
@@ -7,7 +6,12 @@ import '../models/task.dart';
 
 class UserTasks extends ChangeNotifier {
 
-  List<Task> _list = [];
+  int taskCounter;
+
+  UserTasks(){
+    refreshNumberOfTasks();
+  }
+
 
   Future<List<Task>> get tasksFromDb async{
     List<Map<String, dynamic>> tasksJson = await DatabaseService.instance.getAll();
@@ -16,15 +20,14 @@ class UserTasks extends ChangeNotifier {
         .toList(growable: true);
   }
 
-  UnmodifiableListView<Task> get list => UnmodifiableListView(_list);
-
   Future<void> addToList(Task newTask) async {
    await DatabaseService.instance.insert(newTask.toMap());
-    notifyListeners();
+   refreshNumberOfTasks();
   }
 
-  int get numberOfTasks {
-    return _list.length;
+  void refreshNumberOfTasks() async {
+    taskCounter = await DatabaseService.instance.countNumberOfEntries();
+    notifyListeners();
   }
 
   void checkTask(Task task) async{
@@ -35,6 +38,6 @@ class UserTasks extends ChangeNotifier {
 
   void removeTask(int index) async{
     await DatabaseService.instance.delete(index);
-    notifyListeners();
+    refreshNumberOfTasks();
   }
 }

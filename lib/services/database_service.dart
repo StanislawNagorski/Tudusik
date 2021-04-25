@@ -71,4 +71,13 @@ class DatabaseService {
     return await db
         .delete(_tableName, where: '$_columnTaskId = ?', whereArgs: [id]);
   }
+
+  Future<int> countNumberOfEntries() async {
+    Database db = await instance.database;
+    final numberOfRows = await db.rawQuery('''
+    SELECT COUNT($_columnTaskId)
+    FROM $_tableName;
+    ''');
+    return Sqflite.firstIntValue(numberOfRows);
+  }
 }
