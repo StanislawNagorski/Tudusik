@@ -11,8 +11,8 @@ class DatabaseService{
   static final _tableName = 'UserTasks';
 
   static final columnTaskId = '_id';
-  static final columnTaskTitle = 'Title';
-  static final columnTaskIsDone = 'isDone';
+  static final columnTaskName = 'name';
+  static final columnTaskIsDone = 'isCheck';
 
   //Singleton
   DatabaseService._privateConstructor();
@@ -34,7 +34,7 @@ class DatabaseService{
     db.execute('''
     CREATE TABLE $_tableName(
     $columnTaskId INTEGER PRIMARY KEY,
-    $columnTaskTitle TEXT NOT NULL,
+    $columnTaskName TEXT NOT NULL,
     $columnTaskIsDone INTEGER DEFAULT 0
     )
     ''');

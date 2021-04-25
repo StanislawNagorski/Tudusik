@@ -8,4 +8,14 @@ class Task{
   void toggleCheckBox(){
     isCheck = !isCheck;
   }
+
+  Task.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        isCheck = json['isCheck'];
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'isCheck': isCheck,
+  };
+
 }
