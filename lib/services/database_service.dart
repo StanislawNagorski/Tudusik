@@ -28,22 +28,32 @@ class DatabaseService {
   Future<Database> _initiateDatabase() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, _dbname);
-    return await openDatabase(path, version: _dbVersion, onCreate: _createDB);
+    return await openDatabase(path, version: _dbVersion, onCreate: _setUpDB);
   }
 
-  Future _createDB(Database db, int version) {
+  Future _setUpDB(Database db, int version) {
+    _createDb(db);
+    _insertInitialData(db);
+  }
+
+  Future _createDb(Database db) {
     return db.execute('''
-    CREATE TABLE $_tableName(
-    $_columnTaskId INTEGER PRIMARY KEY,
-    $_columnTaskName TEXT NOT NULL,
-    $_columnTaskIsDone INTEGER DEFAULT 0
+        CREATE TABLE $_tableName(
+        $_columnTaskId INTEGER PRIMARY KEY,
+        $_columnTaskName TEXT NOT NULL,
+        $_columnTaskIsDone INTEGER DEFAULT 0
     );
-    
-    INSERT INTO $_tableName 
-    ($_columnTaskName, $_columnTaskIsDone) 
-    VALUES 
-    ("Hello! Thx for using our App!", 0),
-    ("Long press on task to remove it", 0);
+    ''');
+  }
+
+  Future _insertInitialData(Database db) {
+    return db.execute('''
+            INSERT INTO $_tableName 
+            ($_columnTaskName, $_columnTaskIsDone) 
+            VALUES 
+            ("Hello! Thx for using our App!", 0),
+            ("Long press on task to remove it", 0);
+            );
     ''');
   }
 
@@ -54,9 +64,9 @@ class DatabaseService {
 
   Future<List<Map<String, dynamic>>> getAll() async {
     Database db = await instance.database;
-     var list = await db.query(_tableName);
-     print(list);
-     return list;
+    var list = await db.query(_tableName);
+    print(list);
+    return list;
   }
 
   Future<int> update(Map<String, dynamic> row) async {
