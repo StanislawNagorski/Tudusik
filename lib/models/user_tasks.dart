@@ -7,17 +7,21 @@ import 'task.dart';
 
 class UserTasks extends ChangeNotifier {
 
-  List<Task> _list = [
-    Task(name: 'Hello! Thx for using our App!'),
-    Task(name: 'Long press on task to remove it'),
-  ];
+  List<Task> _list = [];
+
+  Future<List<Task>> get tasksFromDb async{
+    List<Map<String, dynamic>> tasksJson = await DatabaseService.instance.getAll();
+    return tasksJson
+        .map((singleRowFromDB) => Task.fromMap(singleRowFromDB))
+        .toList(growable: true);
+  }
 
   UnmodifiableListView<Task> get list => UnmodifiableListView(_list);
 
   Future<void> addToList(Task newTask) async {
     _list.add(newTask);
     
-    int index = await DatabaseService.instance.insert(newTask.toJson());
+    int index = await DatabaseService.instance.insert(newTask.toMap());
     print('inserted id is $index');
     
     notifyListeners();

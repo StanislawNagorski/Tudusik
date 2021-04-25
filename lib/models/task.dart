@@ -8,11 +8,11 @@ class Task {
     isCheck = !isCheck;
   }
 
-  Task.fromJson(Map<String, dynamic> json)
+  Task.fromMap(Map<String, dynamic> json)
       : name = json['name'],
         isCheck = json['isCheck'] == 1 ? true : false;
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
         'name': name,
         'isCheck': isCheck ? 1 : 0,
       };
