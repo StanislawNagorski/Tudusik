@@ -40,6 +40,26 @@ class DatabaseService{
     ''');
   }
 
+  Future<int> insert(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    return await db.insert(_tableName, row);
+  }
+
+  Future<List<Map<String, dynamic>>> getAll() async{
+    Database db = await instance.database;
+    return await db.query(_tableName);
+  }
+
+  Future<int> update(Map<String, dynamic> row) async {
+    Database db = await instance.database;
+    int id = row[columnTaskId];
+    return await db.update(_tableName, row, where: '$columnTaskId = ?', whereArgs: [id]);
+  }
+
+  Future<int> delete(int id) async {
+    Database db = await instance.database;
+    return await db.delete(_tableName, where: '$columnTaskId = ?', whereArgs: [id]);
+  }
 
 
 }
