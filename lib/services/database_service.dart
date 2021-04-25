@@ -54,7 +54,9 @@ class DatabaseService {
 
   Future<List<Map<String, dynamic>>> getAll() async {
     Database db = await instance.database;
-    return await db.query(_tableName);
+     var list = await db.query(_tableName);
+     print(list);
+     return list;
   }
 
   Future<int> update(Map<String, dynamic> row) async {
@@ -66,6 +68,7 @@ class DatabaseService {
 
   Future<int> delete(int id) async {
     Database db = await instance.database;
+    print('probuje skasować $id');
     return await db
         .delete(_tableName, where: '$_columnTaskId = ?', whereArgs: [id]);
   }

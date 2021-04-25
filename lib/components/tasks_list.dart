@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/components/task_single.dart';
 import 'package:to_do/models/task.dart';
-import 'package:to_do/models/user_tasks.dart';
+import 'package:to_do/services/user_tasks_controller.dart';
 import 'package:to_do/services/database_service.dart';
 
 class TasksList extends StatelessWidget {
@@ -18,10 +18,11 @@ class TasksList extends StatelessWidget {
              ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
+                  Task currentTask = snapshot.data[index];
                   return GestureDetector(
-                    //onLongPress: () => db.delete(index),
+                    onLongPress: () => data.removeTask(currentTask.id),
                     child: SingleTask(
-                      task: snapshot.data[index],
+                      task: currentTask,
                       checkBoxCallBack: (bool value) {
                        // taskData.checkTask(index);
                       },

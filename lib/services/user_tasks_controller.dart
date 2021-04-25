@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:to_do/services/database_service.dart';
 
-import 'task.dart';
+import '../models/task.dart';
 
 class UserTasks extends ChangeNotifier {
 
@@ -33,8 +33,10 @@ class UserTasks extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeTask(int index){
-    _list.removeAt(index);
+  void removeTask(int index) async{
+    // _list.removeAt(index);
+    var liczbaSkasowanych = await DatabaseService.instance.delete(index);
+    print('skasowanych: $liczbaSkasowanych');
     notifyListeners();
   }
 }
