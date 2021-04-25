@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/components/tasks_list.dart';
-import 'package:to_do/models/user_tasks.dart';
+import 'package:to_do/services/user_tasks_controller.dart';
 import 'package:to_do/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    int numberOfTasks = Provider.of<UserTasks>(context).numberOfTasks;
+    int numberOfTasks = Provider.of<UserTasks>(context).taskCounter;
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
