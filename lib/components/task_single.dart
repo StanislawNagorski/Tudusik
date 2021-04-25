@@ -20,6 +20,7 @@ class SingleTask extends StatelessWidget {
       ),
       value: task.isCheck,
       onChanged: (value) =>  checkBoxCallBack(value),
+
     );
   }
 }

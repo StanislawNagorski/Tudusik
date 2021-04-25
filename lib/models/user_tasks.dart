@@ -7,6 +7,7 @@ import 'task.dart';
 class UserTasks extends ChangeNotifier {
   List<Task> _list = [
     Task(name: 'Hello! Thx for using our App!'),
+    Task(name: 'Long press on task to remove it'),
   ];
 
   UnmodifiableListView<Task> get list => UnmodifiableListView(_list);
