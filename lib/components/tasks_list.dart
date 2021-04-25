@@ -8,20 +8,20 @@ import 'package:to_do/services/database_service.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    UserTasks data = UserTasks();
+    
     return FutureBuilder<List>(
-      future: DatabaseService.instance.getAll(),
+      future: data.tasksFromDb,
       initialData: [],
       builder: (context, snapshot) {
         return snapshot.hasData ?
              ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  final rowFromDb = snapshot.data[index];
-                  
                   return GestureDetector(
-                   // onLongPress: () => taskData.removeTask(index),
+                    //onLongPress: () => db.delete(index),
                     child: SingleTask(
-                      task: Task.fromMap(rowFromDb),
+                      task: snapshot.data[index],
                       checkBoxCallBack: (bool value) {
                        // taskData.checkTask(index);
                       },

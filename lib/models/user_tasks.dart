@@ -19,11 +19,7 @@ class UserTasks extends ChangeNotifier {
   UnmodifiableListView<Task> get list => UnmodifiableListView(_list);
 
   Future<void> addToList(Task newTask) async {
-    _list.add(newTask);
-    
-    int index = await DatabaseService.instance.insert(newTask.toMap());
-    print('inserted id is $index');
-    
+   await DatabaseService.instance.insert(newTask.toMap());
     notifyListeners();
   }
 
