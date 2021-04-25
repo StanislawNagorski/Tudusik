@@ -9,7 +9,8 @@ After course ended I decided to corporate local database into project with SQFli
 
 This is screen record of created app:
 
-![todo](https://user-images.githubusercontent.com/60883168/115990215-513b2080-a5c2-11eb-9069-61db76f9baef.gif)
+![ToDoAppRecording](https://user-images.githubusercontent.com/60883168/116005623-1956cc00-a608-11eb-89de-82b7d63a55bd.gif)
+
 
 
 ## What I have learned in this project:
